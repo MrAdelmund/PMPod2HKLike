@@ -1,9 +1,14 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class PlayerDeath : MonoBehaviour
 {
-    public int health = 70;
+
+    public Image ImageHealth;
+    public Sprite Health0;
+
+    public int health = 3;
     public float ydeath = -40f;
     public Vector2 customCoordinates = new Vector2(-15f, -4f);
 
@@ -20,6 +25,7 @@ public class PlayerDeath : MonoBehaviour
                     SceneManager.LoadScene(currentScene.name);
                     transform.position = customCoordinates;
                     Debug.Log("Player has died");
+                    ImageHealth.sprite = Health0;
                 }
             }
         }
