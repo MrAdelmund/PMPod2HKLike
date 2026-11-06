@@ -3,7 +3,7 @@ using UnityEngine.InputSystem;
 using UnityEngine.Rendering;
 using UnityEngine.UI;
 
-public class YoyoCooldown : MonoBehaviour
+public class SpinnerCD : MonoBehaviour
 {
 
     public Image ImageShotCD;
