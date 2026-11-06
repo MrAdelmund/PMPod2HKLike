@@ -4,7 +4,7 @@ public class PlayerAttack : MonoBehaviour
 {
     [Header("Attack Settings")]
     public int attackDamage = 1;
-    public float attackRange = 0.5f;
+    public float attackRange = 0.5f; //Nick - thought we could increase this a bit for future enemies, contact damage is currently implemented so our character gets hit when they are close enough to attack
     public float attackCooldown = 0.3f;
 
     [Header("Attack Detection")]

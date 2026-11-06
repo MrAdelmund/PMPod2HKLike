@@ -4,13 +4,15 @@ public class GuardEnemyHealth : MonoBehaviour
 {
     //Goal is to modify this into taking damage only during a specific timing, in this case while the attack animation plays
 
-    public bool isInvulnerable { get; private set; } = true;
+    public bool isInvulnerable { get; set; } = true;
     //get the animation to change the previous code
 
     public Animator TEenemyAnim;
 
+
     public void Start()
     {
+
         health = 3;
     }
     public int health;
