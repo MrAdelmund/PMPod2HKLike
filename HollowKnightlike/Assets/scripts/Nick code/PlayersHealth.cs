@@ -70,6 +70,9 @@ public class PlayersHealth : MonoBehaviour
         if (playerHealth == 0)
         {
             ImageHealth1.sprite = Health0;
+            ImageHealth2.sprite = Health0;
+            ImageHealth3.sprite = Health0;
+
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
 
         }
