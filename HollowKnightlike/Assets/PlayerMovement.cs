@@ -1,4 +1,6 @@
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Rendering;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -21,39 +23,43 @@ public class PlayerMovement : MonoBehaviour
     public bool wallJumpEnabled = true;
     public float wallJumpForceX = 12f;
     public float wallJumpForceY = 16f;
+    public float wallSlidingSpeed;
+    public bool isTouchingWall;
+    public bool isWallSliding = false;
+    public bool canDoubleJump;
+    public bool isDashing;
+
 
     [Header("Coyote Time")]
     public bool coyoteTimeEnabled = true;
     public float coyoteTime = 0.15f;
-
+ 
     [Header("Ground Check")]
-    public Transform groundCheck;
-    public float groundCheckRadius = 0.2f;
-    public LayerMask groundLayer;
+    [SerializeField] public Transform groundCheck;
+    public float groundCheckRadius = 0.5f;
+    [SerializeField] public LayerMask groundLayer;
+    public bool isGrounded;
 
     [Header("Wall Check")]
-    public Transform wallCheckLeft;
-    public Transform wallCheckRight;
+    [SerializeField] public Transform wallCheckLeft;
+    [SerializeField] public Transform wallCheckRight;
+    [SerializeField] public LayerMask wallLayer;
     public float wallCheckDistance = 0.3f;
 
     bool touchingWallLeft;
     bool touchingWallRight;
 
-    Rigidbody2D rb;
+    [SerializeField] Rigidbody2D rb;
 
     public float moveInput;
-
-    public bool isGrounded;
-    public bool isTouchingWall;
-
-    public bool canDoubleJump;
-    public bool isDashing;
 
     float coyoteTimer;
     float dashTimer;
     float dashCooldownTimer;
 
     public int facingDirection = 1;
+
+    public Animator anim;
 
 
 
@@ -96,8 +102,37 @@ public class PlayerMovement : MonoBehaviour
 
     void CheckWall()
     {
-        touchingWallLeft = Physics2D.Raycast(wallCheckLeft.position, Vector2.left, wallCheckDistance, groundLayer);
-        touchingWallRight = Physics2D.Raycast(wallCheckRight.position, Vector2.right, wallCheckDistance, groundLayer);
+        Vector3 leftOrigin = wallCheckLeft.position;
+        Vector3 rightOrigin = wallCheckRight.position;
+
+        if (transform.localScale.x < 0)
+        {
+            leftOrigin = wallCheckRight.position;
+            rightOrigin = wallCheckLeft.position;
+        }
+
+        touchingWallLeft = Physics2D.Raycast(leftOrigin, Vector2.left, wallCheckDistance, groundLayer);
+        touchingWallRight = Physics2D.Raycast(rightOrigin, Vector2.right, wallCheckDistance, groundLayer);
+        bool isTouchingWall = touchingWallRight || touchingWallLeft;
+
+        if (touchingWallLeft || touchingWallRight)
+        {
+            anim.SetBool("cling", isTouchingWall);
+            canDoubleJump = true;
+
+            if (coyoteTimeEnabled)
+            {
+                coyoteTimer = coyoteTime;
+            }
+        }
+        else if (!touchingWallLeft && !touchingWallRight)
+        {
+            anim.SetBool("cling", isTouchingWall);
+            if (coyoteTimeEnabled)
+            {
+                coyoteTimer -= Time.deltaTime;
+            }
+        }
     }
 
 
@@ -120,17 +155,20 @@ public class PlayerMovement : MonoBehaviour
             if (isGrounded || (coyoteTimeEnabled && coyoteTimer > 0))
             {
                 Jump();
+                isTouchingWall = false;
             }
             // Wall Jump
             else if (wallJumpEnabled && (touchingWallLeft || touchingWallRight))
             {
                 WallJump();
+
             }
             // Double Jump
             else if (doubleJumpEnabled && canDoubleJump)
             {
                 Jump();
                 canDoubleJump = false;
+
             }
         }
     }
@@ -140,17 +178,19 @@ public class PlayerMovement : MonoBehaviour
         rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
     }
 
+
     void WallJump()
     {
         if (touchingWallLeft)
         {
-            rb.linearVelocity = new Vector2(wallJumpForceX, wallJumpForceY);
-            facingDirection = 1;
+            rb.linearVelocity = new Vector2(facingDirection * wallJumpForceX, wallJumpForceY);
+            
         }
         else if (touchingWallRight)
         {
-            rb.linearVelocity = new Vector2(-wallJumpForceX, wallJumpForceY);
-            facingDirection = -1;
+            rb.linearVelocity = new Vector2(-facingDirection * wallJumpForceX, wallJumpForceY);
+            facingDirection = -facingDirection;
+
         }
     }
 
