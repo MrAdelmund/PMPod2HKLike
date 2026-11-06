@@ -73,9 +73,9 @@ public class TEattack : MonoBehaviour
 
     void OnDrawGizmosSelected()
     {
-        if (attackPoint == null) return;
+        /*if (attackPoint == null) return;
 
-        if (playerMovement == null) return;
+        if (playerMovement == null) return;*/
 
         Vector2 attackDirection = Vector2.right * playerMovement.facingDirection; //instead of facing direction, make this player position.
         Vector2 attackPosition = (Vector2)attackPoint.position + attackDirection * attackRange * 0.5f;
