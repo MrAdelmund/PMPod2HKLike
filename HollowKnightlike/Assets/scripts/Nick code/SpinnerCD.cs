@@ -47,7 +47,7 @@ public class SpinnerCD : MonoBehaviour
         if (ShotCooldown > 3 && Time.timeScale >= 0.1)
         {
             ShotCooldown = 0;
-            GameObject rangeAttack = Instantiate(yoyo, transform.position, Quaternion.identity);
+            GameObject rangeAttack = Instantiate(Spinner, transform.position, Quaternion.identity);
             Destroy(rangeAttack, 5);
 
             Vector3 mousePos = Mouse.current.position.ReadValue();
