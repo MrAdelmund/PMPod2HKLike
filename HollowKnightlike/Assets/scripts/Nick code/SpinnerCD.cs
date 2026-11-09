@@ -41,7 +41,7 @@ public class SpinnerCD : MonoBehaviour
     }
     private float ShotCooldown;
     private float attackSpeed;
-    public GameObject yoyo;
+    public GameObject Spinner;
     public void OnRangedAttack()
     {
         if (ShotCooldown > 3 && Time.timeScale >= 0.1)
