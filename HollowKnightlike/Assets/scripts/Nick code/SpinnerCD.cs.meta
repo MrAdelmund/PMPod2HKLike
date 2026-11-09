@@ -1,2 +1,17 @@
 fileFormatVersion: 2
 guid: 5e2e67609aedf6a47812de5a5178a2ea
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - ImageShotCD: {instanceID: 0}
+  - ShotRDY: {fileID: 5511875462105149565, guid: 08f4344ee5475db40995d284c78ecb67, type: 3}
+  - Shot2: {instanceID: 0}
+  - Shot1: {instanceID: 0}
+  - Shot0: {instanceID: 0}
+  - Spinner: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
