@@ -17,5 +17,8 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/max's scenes/Title.unity
     guid: 890dc161864ccd841bf2968d90e3978e
+  - enabled: 1
+    path: Assets/Scenes/Nick's Scenes/OfficeLevels.unity
+    guid: afcee09dc3cde1b4a855adc413523568
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
