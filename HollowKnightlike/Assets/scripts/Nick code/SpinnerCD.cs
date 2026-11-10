@@ -40,13 +40,13 @@ public class SpinnerCD : MonoBehaviour
         }
     }
     private float ShotCooldown;
-    private float attackSpeed;
+    private float attackSpeed = 10f;
     public GameObject Spinner;
     public void OnRangedAttack()
     {
         if (ShotCooldown > 3 && Time.timeScale >= 0.1)
         {
-            ShotCooldown = 0;
+            /*ShotCooldown = 0;
             GameObject rangeAttack = Instantiate(Spinner, transform.position, Quaternion.identity);
             Destroy(rangeAttack, 5);
 
@@ -56,8 +56,20 @@ public class SpinnerCD : MonoBehaviour
 
             Vector3 shootDir = mousePos - transform.position;
             shootDir.Normalize();
-            rangeAttack.GetComponent<Rigidbody2D>().linearVelocity = shootDir * attackSpeed;
-            rangeAttack.transform.right = shootDir;
+            rangeAttack.GetComponent<Rigidbody2D>().linearVelocity = shootDir * attackSpeed;*/
+
+            Debug.Log("it's reading this");
+            GameObject shot = Instantiate(Spinner, transform.position, Quaternion.identity);
+            Destroy(shot, 10);
+            Vector3 mousePos = Mouse.current.position.ReadValue();
+            mousePos = Camera.main.ScreenToWorldPoint(mousePos);
+            mousePos.z = 0;
+            Debug.Log(mousePos);
+            Vector3 shootDir = mousePos - transform.position;
+            shootDir.Normalize();
+            shot.GetComponent<Rigidbody2D>().linearVelocity = shootDir;
+            shot.GetComponent<Rigidbody2D>().linearVelocity = shootDir * attackSpeed;
+            ShotCooldown = 0;
         }
     }
 }
