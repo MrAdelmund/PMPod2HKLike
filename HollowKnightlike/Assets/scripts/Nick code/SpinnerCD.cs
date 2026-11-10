@@ -38,38 +38,26 @@ public class SpinnerCD : MonoBehaviour
         {
             ImageShotCD.sprite = Shot0;
         }
+        //image didn't change, look into later, working on the ranged attack even working
     }
+
+    public Vector3 offset;
     private float ShotCooldown;
-    private float attackSpeed = 10f;
+    public float attackSpeed;
     public GameObject Spinner;
     public void OnRangedAttack()
     {
         if (ShotCooldown > 3 && Time.timeScale >= 0.1)
         {
-            /*ShotCooldown = 0;
-            GameObject rangeAttack = Instantiate(Spinner, transform.position, Quaternion.identity);
-            Destroy(rangeAttack, 5);
-
-            Vector3 mousePos = Mouse.current.position.ReadValue();
-            mousePos = Camera.main.ScreenToWorldPoint(mousePos);
-            mousePos.z = 0;
-
-            Vector3 shootDir = mousePos - transform.position;
-            shootDir.Normalize();
-            rangeAttack.GetComponent<Rigidbody2D>().linearVelocity = shootDir * attackSpeed;*/
-
-            Debug.Log("it's reading this");
-            GameObject shot = Instantiate(Spinner, transform.position, Quaternion.identity);
-            Destroy(shot, 10);
-            Vector3 mousePos = Mouse.current.position.ReadValue();
-            mousePos = Camera.main.ScreenToWorldPoint(mousePos);
-            mousePos.z = 0;
-            Debug.Log(mousePos);
-            Vector3 shootDir = mousePos - transform.position;
-            shootDir.Normalize();
-            shot.GetComponent<Rigidbody2D>().linearVelocity = shootDir;
-            shot.GetComponent<Rigidbody2D>().linearVelocity = shootDir * attackSpeed;
-            ShotCooldown = 0;
+            Debug.Log("it's reading this"); //works
+            GameObject shot = Instantiate(Spinner, transform.position, Quaternion.identity); //works
+            Destroy(shot, 10); //works
+            Vector2 mousePos = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, Camera.main.nearClipPlane)); mousePos = Camera.main.ScreenToWorldPoint(mousePos); //Didn't work
+            print(mousePos); //works
+            Vector2 myPosition = transform.position; //Didn't work
+            Vector2 direction = (mousePos - myPosition).normalized; //Based on previous line
+            shot.GetComponent<Rigidbody2D>().linearVelocity = direction * attackSpeed; //works
+            ShotCooldown = 0; //works
         }
     }
 }
