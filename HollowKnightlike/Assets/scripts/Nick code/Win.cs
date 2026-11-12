@@ -10,6 +10,6 @@ public class Win : MonoBehaviour
 
     private void Won()
     {
-        SceneManager.LoadScene(4);
+        SceneManager.LoadScene(2);
     }
 }
