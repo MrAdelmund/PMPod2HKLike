@@ -90,7 +90,11 @@
                 {
                     "name": "RangedAttack",
                     "type": "Button",
+<<<<<<< HEAD
                     "id": "c8ae5f9e-1d8d-4e1f-ad0c-213f36c14f16",
+=======
+                    "id": "5f6e68ec-7baa-4f67-a3fd-03777a7fba4f",
+>>>>>>> e9dcb260eb14eb134cb0e99f217cf093dd01082d
                     "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
@@ -485,7 +489,11 @@
                 },
                 {
                     "name": "",
+<<<<<<< HEAD
                     "id": "a8ca1adc-c8a2-44a8-a295-c8e05d4644a9",
+=======
+                    "id": "65e43adb-42b4-4d9c-9469-ec1643b38ff7",
+>>>>>>> e9dcb260eb14eb134cb0e99f217cf093dd01082d
                     "path": "<Mouse>/rightButton",
                     "interactions": "",
                     "processors": "",
@@ -493,6 +501,7 @@
                     "action": "RangedAttack",
                     "isComposite": false,
                     "isPartOfComposite": false
+<<<<<<< HEAD
                 },
                 {
                     "name": "",
@@ -504,6 +513,8 @@
                     "action": "RangedAttack",
                     "isComposite": false,
                     "isPartOfComposite": false
+=======
+>>>>>>> e9dcb260eb14eb134cb0e99f217cf093dd01082d
                 }
             ]
         },

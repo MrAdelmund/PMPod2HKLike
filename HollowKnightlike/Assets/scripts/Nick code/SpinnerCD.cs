@@ -38,15 +38,23 @@ public class SpinnerCD : MonoBehaviour
         {
             ImageShotCD.sprite = Shot0;
         }
+        //image didn't change, look into later, working on the ranged attack even working
     }
+
+    public Vector3 offset;
     private float ShotCooldown;
+<<<<<<< HEAD
     public float attackSpeed = 5f;
+=======
+    public float attackSpeed;
+>>>>>>> e9dcb260eb14eb134cb0e99f217cf093dd01082d
     public GameObject Spinner;
     public GameObject rangeAttack;
     public void OnRangedAttack()
     {
         if (ShotCooldown > 3 && Time.timeScale >= 0.1)
         {
+<<<<<<< HEAD
             ShotCooldown = 0;
 
             Vector3 mousePos = Mouse.current.position.ReadValue();
@@ -63,6 +71,17 @@ public class SpinnerCD : MonoBehaviour
             rangeAttack.GetComponent<Rigidbody2D>().linearVelocity = shootDir * attackSpeed;
             Destroy(rangeAttack, 5f);
             Debug.Log("Player be shooting");
+=======
+            Debug.Log("it's reading this"); //works
+            GameObject shot = Instantiate(Spinner, transform.position, Quaternion.identity); //works
+            Destroy(shot, 10); //works
+            Vector2 mousePos = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, Camera.main.nearClipPlane)); mousePos = Camera.main.ScreenToWorldPoint(mousePos); //Didn't work
+            print(mousePos); //works
+            Vector2 myPosition = transform.position; //Didn't work
+            Vector2 direction = (mousePos - myPosition).normalized; //Based on previous line
+            shot.GetComponent<Rigidbody2D>().linearVelocity = direction * attackSpeed; //works
+            ShotCooldown = 0; //works
+>>>>>>> e9dcb260eb14eb134cb0e99f217cf093dd01082d
         }
     }
 }
