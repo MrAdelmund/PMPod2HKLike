@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class Win : MonoBehaviour
+public class WinLevel2 : MonoBehaviour
 {
     private void OnTriggerEnter2D(Collider2D other)
     {
