@@ -48,21 +48,22 @@ public class SpinnerCD : MonoBehaviour
         if (ShotCooldown > 3 && Time.timeScale >= 0.1)
         {
             ShotCooldown = 0;
+            Vector3 mouseScreenPos = Mouse.current.position.ReadValue();
+            mouseScreenPos.z = Mathf.Abs(Camera.main.transform.position.z - transform.position.z);
+            Vector3 mouseWorldPos = Camera.main.ScreenToWorldPoint(mouseScreenPos);
+            mouseWorldPos.z = 0f;
 
-            Vector3 mousePos = Mouse.current.position.ReadValue();
-            mousePos.z = Mathf.Abs(Camera.main.transform.position.z - transform.position.z);
-            mousePos = Camera.main.ScreenToWorldPoint(mousePos);
-            mousePos.z = 0f;
-
-            Vector2 shootDir = (mousePos - transform.position).normalized;
+            Vector2 shootDir = ((Vector2)mouseWorldPos - (Vector2)transform.position).normalized;
             float angle = Mathf.Atan2(shootDir.y, shootDir.x) * Mathf.Rad2Deg;
 
- 
             GameObject rangeAttack = Instantiate(Spinner, transform.position, Quaternion.Euler(0f, 0f, angle));
             rangeAttack.GetComponent<Rigidbody2D>().linearVelocity = shootDir * attackSpeed;
+
             Destroy(rangeAttack, 5f);
             Debug.Log("Player be shooting");
         }
     }
+
+
 }
 
