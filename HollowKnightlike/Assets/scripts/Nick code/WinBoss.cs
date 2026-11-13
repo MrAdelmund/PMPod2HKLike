@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class WingBoss : MonoBehaviour
+public class WinBoss : MonoBehaviour
 {
     private void OnTriggerEnter2D(Collider2D other)
     {
