@@ -38,7 +38,7 @@ public class PlayerDeath : MonoBehaviour
         if (collision.gameObject.tag == "Enemy")
         {
             Debug.Log("I hit an enemy!");
-            health -= 70;
+            health -= 1;
 
             if (health <= 0)
             {

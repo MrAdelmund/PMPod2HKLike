@@ -7,8 +7,8 @@ public class TEattack : MonoBehaviour
     //make it so the tank enemy attacks if the player is close
     [Header("Attack Settings")]
     public int attackDamage = 1;
-    public float attackRange = 0.5f;
-    public float attackCooldown = 0.3f;
+    public float attackRange = 1.5f;
+    public float attackCooldown = 5f;
     private float playerDistance;
 
 
@@ -20,10 +20,12 @@ public class TEattack : MonoBehaviour
     public PlayerMovement playerMovement;
     public bool isAttacking = false;
     float cooldownTimer;
+    public Animator TEenemyAnim;
 
     void Start()
     {
         GetComponent<GuardEnemyHealth>().isInvulnerable = true;
+        TEenemyAnim = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -31,7 +33,7 @@ public class TEattack : MonoBehaviour
     {
         cooldownTimer -= Time.deltaTime;
 
-        if (playerDistance <= 2)
+        if (playerDistance <= attackRange)
         {
             Attack();
             isAttacking = true;
