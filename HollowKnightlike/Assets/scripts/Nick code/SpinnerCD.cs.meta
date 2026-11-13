@@ -6,10 +6,11 @@ MonoImporter:
   defaultReferences:
   - ImageShotCD: {instanceID: 0}
   - ShotRDY: {fileID: 5511875462105149565, guid: 08f4344ee5475db40995d284c78ecb67, type: 3}
-  - Shot2: {instanceID: 0}
-  - Shot1: {instanceID: 0}
-  - Shot0: {instanceID: 0}
+  - Shot2: {fileID: -4118933481114962875, guid: 08f4344ee5475db40995d284c78ecb67, type: 3}
+  - Shot1: {fileID: 4126342355772567802, guid: 08f4344ee5475db40995d284c78ecb67, type: 3}
+  - Shot0: {fileID: -4158829823709478852, guid: 08f4344ee5475db40995d284c78ecb67, type: 3}
   - Spinner: {instanceID: 0}
+  - rangeAttack: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
