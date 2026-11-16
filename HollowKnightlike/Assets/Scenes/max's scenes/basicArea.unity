@@ -7880,7 +7880,7 @@ Transform:
   m_GameObject: {fileID: 862333831}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -17.732292, y: 12.909416, z: 0}
+  m_LocalPosition: {x: -17.637, y: 12.97, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -7947,8 +7947,8 @@ CircleCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0.000000044703484, y: 1.6}
-  m_Radius: 0.24
+  m_Offset: {x: -0.0038690567, y: 0.0012841225}
+  m_Radius: 0.22059298
 --- !u!1 &865518134
 GameObject:
   m_ObjectHideFlags: 0
@@ -15669,7 +15669,6 @@ GameObject:
   - component: {fileID: 1690621461}
   - component: {fileID: 1690621460}
   - component: {fileID: 1690621470}
-  - component: {fileID: 1690621469}
   - component: {fileID: 1690621471}
   - component: {fileID: 1690621472}
   m_Layer: 6
@@ -15967,23 +15966,6 @@ Transform:
   - {fileID: 320157309}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1690621469
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1690621459}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 93cdb1fcaf8ab2b4eab73769cc4d7cc2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PlayerDeath
-  ImageHealth: {fileID: 113892778}
-  Health0: {fileID: 6337122800067852480, guid: 1a7bac5019ececf498fb86122905b236, type: 3}
-  health: 3
-  ydeath: -40
-  customCoordinates: {x: -15, y: -4}
 --- !u!114 &1690621470
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15996,6 +15978,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c29e60577df3d564489098604fce640f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayersHealth
+  ydeath: -40
+  customCoordinates: {x: -15, y: -4}
   ImageHealth1: {fileID: 113892778}
   ImageHealth2: {fileID: 925571889}
   ImageHealth3: {fileID: 771839595}
@@ -16023,6 +16007,7 @@ MonoBehaviour:
   offset: {x: 0, y: 0, z: 0}
   attackSpeed: 0
   Spinner: {fileID: 862333831}
+  rangeAttack: {fileID: 862333831}
 --- !u!114 &1690621472
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20494,4 +20479,3 @@ SceneRoots:
   - {fileID: 1061378087}
   - {fileID: 862333834}
   - {fileID: 1311160818}
- 
