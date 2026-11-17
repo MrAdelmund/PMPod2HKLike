@@ -8,22 +8,27 @@ public class TEattack : MonoBehaviour
     [Header("Attack Settings")]
     public int attackDamage = 1;
     public float attackRange = 0.5f;
-    public float attackCooldown = 0.3f;
-    private float playerDistance;
+    public float attackCooldown = 1f;
+    public float playerDistance = 2f;
+    public float attackSpeed = 1f;
+
+    public float attackTime = 0;
 
 
     [Header("Attack Detection")]
-    public Transform attackPoint;
+    public GameObject player;
     public LayerMask playerLayers;
 
     [Header("Referances")]
     public PlayerMovement playerMovement;
     public bool isAttacking = false;
     float cooldownTimer;
+    public GameObject hit;
 
     void Start()
     {
         GetComponent<GuardEnemyHealth>().isInvulnerable = true;
+        player = GameObject.FindGameObjectWithTag("Player");
     }
 
     // Update is called once per frame
@@ -31,56 +36,24 @@ public class TEattack : MonoBehaviour
     {
         cooldownTimer -= Time.deltaTime;
 
-        if (playerDistance <= 2)
+        if (attackTime > attackCooldown)
         {
-            Attack();
-            isAttacking = true;
-            GetComponent<GuardEnemyHealth>().isInvulnerable = false;
+            attackTime = 0;
+            //shooot is off cooldown, try to shoot at the player
+            Vector3 AttDir = player.transform.position - transform.position;
+            if (AttDir.magnitude < playerDistance)
+            {
+                //THE PLAYER IS CLOSE, GET 'EM
+
+                isAttacking = true;
+                GetComponent<GuardEnemyHealth>().isInvulnerable = false;
+                GameObject shot = Instantiate(hit, transform.position, Quaternion.identity);
+                AttDir.Normalize();
+                shot.GetComponent<Rigidbody2D>().linearVelocity = AttDir * attackSpeed;
+                Destroy(shot, 10);
+            }
         }
-
-        if (cooldownTimer <= 0)
-        {
-            isAttacking = false;
-            GetComponent<GuardEnemyHealth>().isInvulnerable = true;
-        }
-    }
-
-    void Attack()
-    {
-        cooldownTimer = attackCooldown;
-
-        // Determine attack direction based on facing
-        Vector2 attackDirection = Vector2.right * playerMovement.facingDirection; //make this player position
-
-        // Calculate attack position
-        Vector2 attackPosition = (Vector2)attackPoint.position + attackDirection * attackRange * 0.5f;
-        //play attack animation
-        if (attackPoint.GetComponent<Animator>() != null)
-        {
-            attackPoint.GetComponent<Animator>().SetTrigger("Attack");
-        }
-        Collider2D[] playerHit = Physics2D.OverlapCircleAll(
-            attackPosition,
-            attackRange,
-            playerLayers
-        );
-
-        foreach (Collider2D Player in playerHit)
-        {
-            Player.SendMessage("TakeDamage", attackDamage, SendMessageOptions.DontRequireReceiver);
-        }
-    }
-
-    void OnDrawGizmosSelected()
-    {
-        /*if (attackPoint == null) return;
-
-        if (playerMovement == null) return;*/
-
-        Vector2 attackDirection = Vector2.right * playerMovement.facingDirection; //instead of facing direction, make this player position.
-        Vector2 attackPosition = (Vector2)attackPoint.position + attackDirection * attackRange * 0.5f;
-
-        Gizmos.color = Color.yellow;
-        Gizmos.DrawWireSphere(attackPosition, attackRange);
     }
 }
+       
+  
