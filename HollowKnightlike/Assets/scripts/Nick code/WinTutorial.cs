@@ -5,7 +5,10 @@ public class WinTutorial : MonoBehaviour
 {
     private void OnTriggerEnter2D(Collider2D other)
     {
-        Won();
+        if (other.gameObject.CompareTag("Player"))
+        {
+            Won();
+        }
     }
 
     private void Won()
