@@ -6,6 +6,7 @@ TagManager:
   tags:
   - enemy
   - Level1Win
+  - Spinner
   layers:
   - Default
   - TransparentFX

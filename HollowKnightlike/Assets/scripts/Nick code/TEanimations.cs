@@ -100,7 +100,7 @@ public class TEanimations : MonoBehaviour
         cooldownTimer = attackCooldown;
 
         // Determine attack direction based on facing
-        Vector2 attackDirection = Vector2.right * playerMovement.facingDirection; //make this player position
+        Vector2 attackDirection = Vector2.right * player.transform.position; //make this player position
 
         // Calculate attack position
         Vector2 attackPosition = (Vector2)attackPoint.position + attackDirection * attackRange * 0.5f;

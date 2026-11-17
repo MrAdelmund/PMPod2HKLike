@@ -5,8 +5,10 @@ using UnityEngine.UI;
 
 public class SpinnerCD : MonoBehaviour
 {
-
+    [Header("UI")]
     public Image ImageShotCD;
+
+    [Header("Images")]
     public Sprite ShotRDY;
     public Sprite Shot2;
     public Sprite Shot1;
@@ -41,10 +43,14 @@ public class SpinnerCD : MonoBehaviour
         //image didn't change, look into later, working on the ranged attack even working
     }
 
-    public Vector3 offset;
+    [Header("Variables")]
+    public float throwSpeed = 5f;
     private float ShotCooldown;
 
-    public float attackSpeed = 5f;
+    [Header("Vector3")]
+    public Vector3 offset;
+
+    [Header("Objects")]
     public GameObject Spinner;
     public GameObject rangeAttack;
     public void OnRangedAttack()
@@ -64,7 +70,7 @@ public class SpinnerCD : MonoBehaviour
 
             // 3. Spawn and launch
             GameObject rangeAttack = Instantiate(Spinner, transform.position, Quaternion.Euler(0f, 0f, angle));
-            rangeAttack.GetComponent<Rigidbody2D>().linearVelocity = shootDir * attackSpeed;
+            rangeAttack.GetComponent<Rigidbody2D>().linearVelocity = shootDir * throwSpeed;
             Destroy(rangeAttack, 5f);
             Debug.Log("Player be shooting");
 

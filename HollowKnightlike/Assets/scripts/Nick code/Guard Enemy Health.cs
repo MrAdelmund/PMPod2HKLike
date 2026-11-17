@@ -3,10 +3,11 @@ using UnityEngine;
 public class GuardEnemyHealth : MonoBehaviour
 {
     //Goal is to modify this into taking damage only during a specific timing, in this case while the attack animation plays
-
+    [Header("Invulnerability from another code, probably will show nothing")]
     public bool isInvulnerable { get; set; } = true;
     //get the animation to change the previous code
 
+    [Header("Animator")]
     public Animator TEenemyAnim;
 
 
@@ -15,6 +16,7 @@ public class GuardEnemyHealth : MonoBehaviour
 
         health = 3;
     }
+    [Header("Variables")]
     public int health;
     private void OnTriggerEnter2D(Collider2D collision)
 
