@@ -627,6 +627,7 @@ GameObject:
   - component: {fileID: 774825567}
   - component: {fileID: 774825566}
   - component: {fileID: 774825565}
+  - component: {fileID: 774825569}
   m_Layer: 3
   m_Name: Elevater
   m_TagString: Untagged
@@ -692,7 +693,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
+  m_Mass: 10000
   m_LinearDamping: 0
   m_AngularDamping: 0.05
   m_GravityScale: 0
@@ -783,6 +784,21 @@ Transform:
   - {fileID: 830662856}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &774825569
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 774825564}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 87c10d69cbaa5d04b8636b0ad00210c4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::elevater
+  MoveBy: {x: 0, y: 49.55, z: 0}
+  time_to_wait: 5
+  SpeedAndDirection: {x: 0, y: 5, z: 0}
 --- !u!1 &821712377
 GameObject:
   m_ObjectHideFlags: 0
@@ -1319,7 +1335,6 @@ Transform:
   - {fileID: 821712378}
   - {fileID: 328168068}
   - {fileID: 1942200773}
-  - {fileID: 1343579511}
   - {fileID: 1322103673}
   - {fileID: 132205326}
   m_Father: {fileID: 0}
@@ -1488,12 +1503,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1343579510}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: -0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.120904, y: 1.02973, z: 0}
-  m_LocalScale: {x: 0.17632584, y: -2.3214273, z: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 3.260727, y: 65.07525, z: 0}
+  m_LocalScale: {x: 11.436402, y: 24.403372, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1165826840}
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &1343579512
 BoxCollider2D:
@@ -1857,7 +1872,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1888070358}
-  m_BodyType: 0
+  m_BodyType: 2
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
@@ -2609,5 +2624,6 @@ SceneRoots:
   - {fileID: 2082870933}
   - {fileID: 2009209626}
   - {fileID: 1165826840}
+  - {fileID: 1343579511}
   - {fileID: 774825568}
   - {fileID: 396638385}
