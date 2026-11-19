@@ -2,12 +2,18 @@ using UnityEngine;
 
 public class elevater : MonoBehaviour
 {
+    [Header("It will move this much in this direction")] //whermst
     public Vector3 MoveBy;
     Vector3 pointA;
     Vector3 pointB;
+
+    [Header("It will wait this long before moving again")]
     public float time_to_wait;
     float delay;
+    [Header("how fast it moves")]
     public Vector3 SpeedAndDirection;
+    //if this doesn't work, x means it will move right, -x will be left, even if you didn't put a x value on the MoveBy value.
+    //I'dn't've if whomst wasn't whermst
     void Start()
     {
         this.pointA = this.transform.position;

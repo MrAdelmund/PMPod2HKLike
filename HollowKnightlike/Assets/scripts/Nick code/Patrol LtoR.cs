@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Collections.Generic;
 using System.Collections;
+using JetBrains.Annotations;
 
 public class PatrolLtoR : MonoBehaviour
 {
@@ -63,6 +64,8 @@ public class PatrolLtoR : MonoBehaviour
     {
         
     }*/
+
+    [Header("Same as elevator code")]
     public Vector3 MoveBy;
     Vector3 pointA;
     Vector3 pointB;
