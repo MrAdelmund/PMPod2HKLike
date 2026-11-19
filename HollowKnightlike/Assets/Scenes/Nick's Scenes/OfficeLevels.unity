@@ -1596,7 +1596,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::elevater
   MoveBy: {x: 0, y: 49.6, z: 0}
-  time_to_wait: 2
+  time_to_wait: 3
   SpeedAndDirection: {x: 0, y: 3, z: 0}
 --- !u!114 &774825570
 MonoBehaviour:
