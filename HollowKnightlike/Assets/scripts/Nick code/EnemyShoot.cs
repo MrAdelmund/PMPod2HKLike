@@ -4,18 +4,23 @@ using UnityEngine.UIElements;
 public class EnemyShoot : MonoBehaviour
 {
     public GameObject bullet;
-   
+
+    [Header("Attack Timing")]
     public float bulletSpeed = 2f;
     public float attackTime = 3;
     public float windupTime = 3;
-    GameObject player;
     float timer = 0;
     float windTimer = 0;
     public float shootTriggerDistance = 5;
+    bool isWinding = false;
+
+    [Header("Player")]
+    GameObject player;
     public Transform firePoint;
+
+    [Header("Rigidbody & Animator")]
     private Rigidbody2D rb2d;
     public Animator anim;
-    bool isWinding = false;
 
     void Start()
     {
