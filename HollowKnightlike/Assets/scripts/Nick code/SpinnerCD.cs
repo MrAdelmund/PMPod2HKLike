@@ -5,10 +5,8 @@ using UnityEngine.UI;
 
 public class SpinnerCD : MonoBehaviour
 {
-    [Header("UI")]
-    public Image ImageShotCD;
 
-    [Header("Images")]
+    public Image ImageShotCD;
     public Sprite ShotRDY;
     public Sprite Shot2;
     public Sprite Shot1;
@@ -40,17 +38,9 @@ public class SpinnerCD : MonoBehaviour
         {
             ImageShotCD.sprite = Shot0;
         }
-        //image didn't change, look into later, working on the ranged attack even working
     }
-
-    [Header("Variables")]
-    public float throwSpeed = 5f;
     private float ShotCooldown;
-
-    [Header("Vector3")]
-    public Vector3 offset;
-
-    [Header("Objects")]
+    public float attackSpeed = 5f;
     public GameObject Spinner;
     public GameObject rangeAttack;
     public void OnRangedAttack()
@@ -58,23 +48,22 @@ public class SpinnerCD : MonoBehaviour
         if (ShotCooldown > 3 && Time.timeScale >= 0.1)
         {
             ShotCooldown = 0;
+            Vector3 mouseScreenPos = Mouse.current.position.ReadValue();
+            mouseScreenPos.z = Mathf.Abs(Camera.main.transform.position.z - transform.position.z);
+            Vector3 mouseWorldPos = Camera.main.ScreenToWorldPoint(mouseScreenPos);
+            mouseWorldPos.z = 0f;
 
-            Vector3 mousePos = Mouse.current.position.ReadValue();
-            mousePos.z = Mathf.Abs(Camera.main.transform.position.z - transform.position.z);
-            mousePos = Camera.main.ScreenToWorldPoint(mousePos);
-            mousePos.z = 0f;
-
-            // 2. Calculate direction and angle
-            Vector2 shootDir = (mousePos - transform.position).normalized;
+            Vector2 shootDir = ((Vector2)mouseWorldPos - (Vector2)transform.position).normalized;
             float angle = Mathf.Atan2(shootDir.y, shootDir.x) * Mathf.Rad2Deg;
 
-            // 3. Spawn and launch
             GameObject rangeAttack = Instantiate(Spinner, transform.position, Quaternion.Euler(0f, 0f, angle));
-            rangeAttack.GetComponent<Rigidbody2D>().linearVelocity = shootDir * throwSpeed;
+            rangeAttack.GetComponent<Rigidbody2D>().linearVelocity = shootDir * attackSpeed;
+
             Destroy(rangeAttack, 5f);
             Debug.Log("Player be shooting");
-
         }
     }
+
+
 }
 
