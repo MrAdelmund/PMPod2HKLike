@@ -796,9 +796,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 87c10d69cbaa5d04b8636b0ad00210c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::elevater
-  MoveBy: {x: 0, y: 49.57, z: 0}
+  MoveBy: {x: 0, y: 49.58, z: 0}
   time_to_wait: 5
-  SpeedAndDirection: {x: 0, y: 3, z: 0}
+  SpeedAndDirection: {x: 0, y: 5, z: 0}
 --- !u!1 &821712377
 GameObject:
   m_ObjectHideFlags: 0
