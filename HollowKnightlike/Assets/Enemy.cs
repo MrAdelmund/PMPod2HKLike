@@ -2,8 +2,6 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-
-    [Header("Health Amount")]
     public int health = 3;
 
     public void TakeDamage(int damage)
@@ -21,7 +19,7 @@ public class Enemy : MonoBehaviour
         if (collision.gameObject.tag == "Spinner")
         {
             Debug.Log("Enemy was shot!");
-            health -= 3;
+            health -= 2;
             if (health <= 0)
             {
                 Debug.Log("Enemy Down!");

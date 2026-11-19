@@ -4,7 +4,7 @@ public class SpinnerDmg : MonoBehaviour
 {
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.tag != "Player")
+        if(collision.gameObject.tag == "enemy")
         {
             Debug.Log("Bullet destroyed");
             Destroy(gameObject);
