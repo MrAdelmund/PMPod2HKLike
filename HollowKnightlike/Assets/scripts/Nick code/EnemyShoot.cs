@@ -15,6 +15,7 @@ public class EnemyShoot : MonoBehaviour
     public Transform firePoint;
     private Rigidbody2D rb2d;
     public Animator anim;
+    bool isWinding = false;
 
     void Start()
     {
@@ -26,30 +27,43 @@ public class EnemyShoot : MonoBehaviour
     void Update()
     {
 
-            Vector3 shootDir = player.transform.position - transform.position;
-            if(shootDir.magnitude < shootTriggerDistance)
-            {
-                //THE PLAYER IS CLOSE, GET 'EM
+            Vector3 playerDistance = player.transform.position - transform.position;
+
+        if (playerDistance.magnitude < shootTriggerDistance)
+        {
+            //THE PLAYER IS CLOSE, GET 'EM
             bool isWinding = true;
             anim.SetBool("windingUp", isWinding);
-           
+            bool isIdle = false;
+            anim.SetBool("Idle", isIdle);
+
             timer += Time.deltaTime;
-            if(timer > attackTime)
-            {
-                timer = 0;
-                GameObject shot = Instantiate(bullet, firePoint.position, Quaternion.identity);
-                shootDir.Normalize();
-                shot.GetComponent<Rigidbody2D>().linearVelocity = shootDir * bulletSpeed;
-                Destroy(shot, 1);
-            } 
-            }
+        }
+        else if (playerDistance.magnitude > shootTriggerDistance)
+        {
 
-            if (shootDir.magnitude > shootTriggerDistance)
-            {
+            bool isWinding = false;
+            anim.SetBool("windingUp", isWinding);
+            bool isIdle = true;
+            anim.SetBool("Idle", isIdle);
+        }
 
-                bool isWinding = false;
-                anim.SetBool("windingUp", isWinding);
-            }
+        if (timer > attackTime)
+        {
+             timer = 0;
+
+             bool isAttacking = true;
+             anim.SetBool("Attacking", isAttacking);
+
+             GameObject shot = Instantiate(bullet, firePoint.position, Quaternion.identity);
+             playerDistance.Normalize();
+             shot.GetComponent<Rigidbody2D>().linearVelocity = playerDistance * bulletSpeed;
+             Destroy(shot, 1);
+        }
+    
+
+            
+        
 
     }
 }
