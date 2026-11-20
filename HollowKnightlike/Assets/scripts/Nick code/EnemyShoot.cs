@@ -3,17 +3,21 @@ using UnityEngine.UIElements;
 
 public class EnemyShoot : MonoBehaviour
 {
+    [Header("Attack Hitbox")]
     public GameObject bullet;
-   
+    [Header("make this 0")]
     public float bulletSpeed = 2f;
+    [Header("Time before attacking")]
     public float attackTime = 1f;
     public float windupTime = .1f;
+    [Header("player")]
     GameObject player;
     float timer = 0;
     float windTimer = 0;
     public float shootTriggerDistance = 5;
     public Transform firePoint;
     private Rigidbody2D rb2d;
+    [Header("Animator")]
     public Animator anim;
     bool isWinding = false;
 
@@ -60,9 +64,9 @@ public class EnemyShoot : MonoBehaviour
         else
         {
             // Player is out of range: reset animations and timers
+            anim.SetBool("Idle", true);
             anim.SetBool("windingUp", false);
             anim.SetBool("Attacking", false);
-            anim.SetBool("Idle", true);
             windTimer = 0;
             timer = 0;
         }
