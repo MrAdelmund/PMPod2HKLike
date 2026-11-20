@@ -19621,7 +19621,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 93cdb1fcaf8ab2b4eab73769cc4d7cc2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerDeath
-  ImageHealth: {fileID: 0}
+  ImageHealth: {fileID: 1114880560}
   Health0: {fileID: 6337122800067852480, guid: 1a7bac5019ececf498fb86122905b236, type: 3}
   health: 3
   ydeath: -40
@@ -19640,9 +19640,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PlayersHealth
   ydeath: -40
   customCoordinates: {x: -15, y: -4}
-  ImageHealth1: {fileID: 0}
-  ImageHealth2: {fileID: 0}
-  ImageHealth3: {fileID: 0}
+  ImageHealth1: {fileID: 1114880560}
+  ImageHealth2: {fileID: 706705174}
+  ImageHealth3: {fileID: 1124227858}
   HealthFull: {fileID: 4197606196651542819, guid: 1a7bac5019ececf498fb86122905b236, type: 3}
   Health2: {fileID: 6818433322602508778, guid: 1a7bac5019ececf498fb86122905b236, type: 3}
   Health1: {fileID: 5976427193542175618, guid: 1a7bac5019ececf498fb86122905b236, type: 3}
@@ -37455,8 +37455,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::EnemyShoot
   bullet: {fileID: 2080146028}
   bulletSpeed: 0
-  attackTime: 0.75
-  windupTime: 3
+  attackTime: 1.5
+  windupTime: 0.5
   shootTriggerDistance: 2
   firePoint: {fileID: 382220992}
   anim: {fileID: 2147312628}

@@ -27,6 +27,8 @@ public class EnemyShoot : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player");
         rb2d = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
+        timer = 0;
+        windTimer = 0;
     }
 
     void Update()
@@ -42,8 +44,9 @@ public class EnemyShoot : MonoBehaviour
 
             if (windTimer > windupTime)
             {
-
+                anim.SetBool("Idle", false);
                 anim.SetBool("windingUp", true);
+                windTimer = 0;
             }
             else
             {
@@ -66,9 +69,9 @@ public class EnemyShoot : MonoBehaviour
         else
         {
             // Player is out of range: reset animations and timers
-            anim.SetBool("Idle", true);
             anim.SetBool("windingUp", false);
             anim.SetBool("Attacking", false);
+            anim.SetBool("Idle", true);
             windTimer = 0;
             timer = 0;
         }
