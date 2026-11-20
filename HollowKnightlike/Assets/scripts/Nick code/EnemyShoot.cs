@@ -10,10 +10,11 @@ public class EnemyShoot : MonoBehaviour
     [Header("Time before attacking")]
     public float attackTime = 1f;
     public float windupTime = .1f;
-    [Header("player")]
+    [Header("Player")]
     GameObject player;
     float timer = 0;
     float windTimer = 0;
+    [Header("Attack Range")]
     public float shootTriggerDistance = 5;
     public Transform firePoint;
     private Rigidbody2D rb2d;
@@ -58,7 +59,8 @@ public class EnemyShoot : MonoBehaviour
                     playerDistance.Normalize();
                     shot.GetComponent<Rigidbody2D>().linearVelocity = playerDistance * bulletSpeed;
                     Destroy(shot, 1);
-                }
+                } //Nick - Personally i think playing the animations on a trigger collider would work better, 
+                 //but y'all seem to be doing fine.
             }
         }
         else
