@@ -14,7 +14,8 @@ public class playerAnimator : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-      
+        //Nick -  Something that coulda really helped is if Max explained his code in these comments so that we don't spend
+        //3 weeks FINDING OUT HOW TO ANIMATE USING THEIR CODE
 
         if(GetComponent<PlayerMovement>().moveInput != 0)
         {
